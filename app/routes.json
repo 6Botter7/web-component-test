@@ -8,6 +8,10 @@
             "view": "welcome"
         },
         {
+            "title": "Time-Tracker",
+            "view": "time-tracker"
+        },
+        {
             "title": "About",
             "view": "about"
         }

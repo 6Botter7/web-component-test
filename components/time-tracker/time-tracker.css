@@ -1,0 +1,45 @@
+:root {
+    --primary-color: #2F3545;
+    --secondary-color: #edf5ff;
+}
+
+:host {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: #2F3545;
+    color: #edf5ff;
+    font-family: "Courier New", Courier, monospace;
+    box-shadow: 0 0 30px rgba(197, 20, 20, 0.8);
+    transition-duration: 0.9s;
+    padding: 1rem;
+}
+
+:host h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: crimson;
+    transition-duration: 0.5s;
+}
+
+
+:host(.running) h2 {
+    color: #76C422;
+}
+
+:host(.running) {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(7, 172, 3, 0.5),
+        0 0 10px rgba(7, 172, 3, 0.5),
+        0 0 20px rgba(7, 172, 3, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 5px rgb(3, 251, 15),
+        0 0 10px rgba(3, 251, 15, 1),
+        0 0 15px rgba(3, 251, 15, 1);
+    }
+}

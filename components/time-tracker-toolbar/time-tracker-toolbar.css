@@ -1,0 +1,22 @@
+:host #start-day-btn, :host #end-day-btn {
+    font-size: .75rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+:host #start-day-btn {
+    background: #76C422;
+}
+
+:host #start-day-btn:hover, :host #end-day-btn:hover {
+    transform: scale(1.1);
+}
+
+:host #end-day-btn {
+    background: #C42222;
+}
