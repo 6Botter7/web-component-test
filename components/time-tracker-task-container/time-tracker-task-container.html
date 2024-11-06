@@ -1,1 +1,13 @@
-<h3>Task Container</h3>
+<h3 id="container-header">Completed Tasks</h3>
+
+<div id="completed-task-container" >
+    <span>Well Hello There</span>
+</div>
+
+<template id="task-factory">
+    <div class="task-container">
+        <span class="task-name"></span>
+        <span class="task-duration"></span>
+        <slot name="task-actions"></slot>
+    </div>
+</template>

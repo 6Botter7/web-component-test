@@ -1,7 +1,6 @@
 :host {
     display: flex;
     justify-self: center;
-    height: 900px;
+    height: 750px;
     width: 750px;
-    border: 1px solid silver;
 }

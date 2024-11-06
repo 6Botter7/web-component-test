@@ -1,6 +1,7 @@
 class TimeTrackerToolbar extends crs.classes.BindableElement {
     #intervalId;
     #timeIndicator;
+    #activeTask;
     get html() {
         return import.meta.url.replace(".js", ".html");
     }
@@ -24,6 +25,7 @@ class TimeTrackerToolbar extends crs.classes.BindableElement {
         console.log("Time Tracker Toolbar Disconnected")
         this.#intervalId = null;
         this.#timeIndicator = null;
+        this.#activeTask = null;
     }
 
     async startTimeTracker() {
@@ -40,6 +42,8 @@ class TimeTrackerToolbar extends crs.classes.BindableElement {
             const elapsedTime = currentTime - startTime;
             this.#timeIndicator.innerText = await this.#formatTime(elapsedTime);
         }, 1000);
+
+        this.#activeTask = await crs.binding.data.getProperty(this, "activeTask");
     }
 
     async stopTimeTracker() {
@@ -48,6 +52,8 @@ class TimeTrackerToolbar extends crs.classes.BindableElement {
         await crs.binding.events.emitter.emit("change-tracker-state", { element: this , isActive: false});
         this.classList.remove("running");
         clearInterval(this.#intervalId);
+        // this.#timeIndicator.innerText = "00:00:00";
+        await this.#saveTask(this.#timeIndicator.innerText, this.#activeTask);
     }
 
     async #formatTime(ms) {
@@ -57,6 +63,14 @@ class TimeTrackerToolbar extends crs.classes.BindableElement {
         const seconds = String(totalSeconds % 60).padStart(2, '0');
 
         return `${hours}:${minutes}:${seconds}`;
+    }
+
+    async #saveTask(time, task) {
+        console.log(`Task: ${task} - Time: ${time}`);
+        await crs.binding.events.emitter.emit("save-task", { task: task, time: time });
+        this.#timeIndicator.innerText = "00:00:00";
+        this.#activeTask = null;
+        await crs.binding.data.setProperty(this, "activeTask", null);
     }
 }
 

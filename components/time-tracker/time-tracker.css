@@ -4,7 +4,8 @@
 }
 
 :host {
-    display: block;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
     background: #2F3545;
@@ -13,6 +14,9 @@
     box-shadow: 0 0 30px rgba(197, 20, 20, 0.8);
     transition-duration: 0.9s;
     padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 :host h2 {
@@ -22,13 +26,24 @@
     transition-duration: 0.5s;
 }
 
+:host #time-now {
+    font-size: 1.5rem;
+    color: #C42222;
+    font-weight: bold;
+    font-style: italic;
+}
+
+:host(.running) #time-now {
+    color: #76C422;
+    transition-duration: 0.5s;
+}
 
 :host(.running) h2 {
     color: #76C422;
 }
 
 :host(.running) {
-    animation: pulse 2s infinite;
+    animation: pulse 3s infinite;
 }
 
 @keyframes pulse {

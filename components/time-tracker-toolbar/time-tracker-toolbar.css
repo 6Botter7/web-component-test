@@ -1,3 +1,33 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+    align-items: center;
+    height: max-content;
+    width: 90%;
+    background: transparent;
+    color: var(--secondary-color);
+    font-family: "Courier New", Courier, monospace;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(197, 20, 20, 0.8);
+    margin: 2rem 0;
+}
+
+:host([data-is-running="true"]) {
+    animation: pulse 3s infinite;
+}
+
+:host #task-input {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-family: cursive;
+    font-size: 1rem;
+    font-weight: 100;
+}
+
 :host #start-day-btn, :host #end-day-btn {
     font-size: .75rem;
     font-weight: bold;
@@ -7,6 +37,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    font-family: cursive;
 }
 
 :host #start-day-btn {

@@ -1,0 +1,74 @@
+:host {
+    flex-grow: 1;
+    overflow: auto;
+}
+
+:host h3 {
+    width: fit-content;
+    cursor: pointer;
+    position: sticky;
+    top: 20px;
+    margin-bottom: 3rem;
+}
+
+:host h3::before {
+    display: inline-block;
+    content: ">";
+    font-size: 1.5rem;
+    font-family: cursive;
+    border: none;
+    padding: 0.25rem;
+    margin-right: 0.5rem;
+    rotate: 88deg;
+    transition-duration: 0.3s;
+}
+
+:host h3.collapsed::before {
+    rotate: 0deg;
+    color: #76C422;
+}
+
+:host #completed-task-container {
+    display: flex;
+    width: 90%;
+    justify-self: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(118, 196, 34, 0.19);
+    border-radius: 5px;
+    background: #2F3545;
+    color: white;
+    max-height: 500px;
+    overflow: hidden;
+    transition: 0.4s ease;
+}
+
+:host([data-collapsed="true"]) #completed-task-container {
+    max-height: 0;
+    padding: 0;
+    margin-top: 0;
+    /*width: 100px;*/
+    border: 1px solid #76C422;
+    transition: 0.4s ease;
+}
+
+:host #completed-task-container span {
+
+}
+
+:host .task-container {
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    border-bottom: 1px solid #76C422;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    cursor: pointer;
+}
+
+:host .task-container:hover {
+    box-shadow: 0 5px 5px #76C422;
+}
