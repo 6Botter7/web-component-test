@@ -49,7 +49,21 @@ class TimeTrackerTaskContainer extends crs.classes.BindableElement {
         const taskContainer = await TaskFactory.createTask(template, event);
 
         this.shadowRoot.querySelector("#completed-task-container").appendChild(taskContainer);
-        await crs.binding.events.emitter.emit("add-task-to-database", { element: this, task: event.task });
+        // await crs.binding.events.emitter.emit("add-task-to-database", { element: this, task: event.task });
+        await TaskDatabase.addTask(event);
+    }
+
+    async removeTask(event) {}
+
+    async editTask(event) {}
+
+    async clearAllTasks() {
+        const tasks = this.shadowRoot.querySelectorAll(".task-container")
+        for(const task of tasks) {
+            task.remove();
+        }
+
+        await TaskDatabase.clearAllTasks();
     }
 }
 

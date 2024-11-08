@@ -1,6 +1,6 @@
 :host {
     flex-grow: 1;
-    overflow: auto;
+    overflow: hidden;
 }
 
 :host h3 {
@@ -28,29 +28,62 @@
     color: #76C422;
 }
 
-:host #completed-task-container {
+#clear-completed-tasks {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    position: sticky;
+    top: 0;
     display: flex;
+    float: right;
+    border-radius: 15px;
+}
+
+#clear-completed-tasks:hover {
+    box-shadow: 1px 1px 5px rgba(239, 7, 7, 0.78);
+}
+
+#clear-completed-tasks img {
+    pointer-events: none;
+}
+
+:host #completed-task-container {
+    display: block;
     width: 90%;
+    max-height: 300px;
     justify-self: center;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     margin-top: 1rem;
     padding: 1rem;
     border: 1px solid rgba(118, 196, 34, 0.19);
     border-radius: 5px;
     background: #2F3545;
     color: white;
-    max-height: 500px;
-    overflow: hidden;
+    overflow-y: hidden;
     transition: 0.4s ease;
+    scrollbar-gutter: stable;
 }
+
+
+:host #completed-task-container:hover {
+    box-shadow: 0 5px 5px #76C422;
+    overflow-y: auto;
+}
+
+
+:host #completed-task-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+:host #completed-task-container::-webkit-scrollbar-thumb {
+    background-color: #76C422;
+    border-radius: 4px;
+}
+
 
 :host([data-collapsed="true"]) #completed-task-container {
     max-height: 0;
     padding: 0;
     margin-top: 0;
-    /*width: 100px;*/
     border: 1px solid #76C422;
     transition: 0.4s ease;
 }
@@ -62,7 +95,7 @@
 :host .task-container {
     display: flex;
     width: 90%;
-    justify-content: space-around;
+    justify-content: space-between;
     border-bottom: 1px solid #76C422;
     padding: 0.5rem;
     margin: 1rem 0;
